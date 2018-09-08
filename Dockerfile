@@ -12,9 +12,11 @@ RUN apt-get update
 RUN apt-get install -y curl git bzip2
 
 # Install reveal.js
-RUN git clone https://github.com/hakimel/reveal.js.git
+RUN git clone https://github.com/hakimel/reveal.js.git && \
+  cd reveal.js && \
+  git checkout 3.7.0 && \
+  npm install
 
-RUN cd reveal.js; npm install
 RUN npm install -g grunt
 
 EXPOSE 8000
